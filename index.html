@@ -1,0 +1,244 @@
+:root {
+  color-scheme: light;
+  --bg: rgb(244, 247, 246);
+  --panel: rgb(255, 255, 255);
+  --text-primary: rgb(24, 33, 31);
+  --text-secondary: rgb(102, 115, 111);
+  --line: rgb(217, 227, 224);
+  --text-highlight: rgb(15, 118, 110);
+  --hover: rgb(242, 250, 248);
+  --current: rgb(180, 83, 9);
+  --current-background: rgb(255, 250, 242);
+  --past: rgb(135, 145, 141);
+  --shadow-color: rgb(24 33 31 / 0.12);
+  --shadow: 0 24px 80px var(--shadow-color);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text-primary);
+  background: var(--bg);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.page-shell {
+  width: min(100% - 32px, 960px);
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.site-logo {
+  display: block;
+  max-width: 100%;
+  object-fit: contain;
+  height: auto;
+  width: min(436px, 70%);
+}
+
+.schedule-panel {
+  overflow: hidden;
+  border: 2px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.panel-header {
+  display: grid;
+  gap: 24px;
+  padding: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.header-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.header-title {
+  min-width: 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.1rem;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+.time-card {
+  display: grid;
+  gap: 6px;
+  min-width: 220px;
+  padding: 16px;
+  border: 2px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.time-label {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+#local-clock {
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.schedule-list {
+  display: grid;
+  gap: 28px;
+  padding: 32px;
+}
+
+.day-group {
+  display: grid;
+  gap: 12px;
+}
+
+.day-title {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.event-card {
+  display: grid;
+  grid-template-columns: minmax(110px, 150px) 1fr;
+  gap: 14px;
+  align-items: start;
+  min-height: 82px;
+  padding: 12px 14px;
+  border: 2px solid var(--line);
+  border-left: 10px solid var(--text-highlight);
+  border-radius: 8px;
+  background: var(--panel);
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+
+.event-card:hover {
+  background: var(--hover);
+}
+
+.event-card.is-current {
+  border-left-color: var(--current);
+  background: var(--current-background);
+}
+
+.event-card.is-past {
+  border-left-color: var(--past);
+  opacity: 0.75;
+}
+
+.event-time {
+  display: grid;
+  gap: 4px;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+}
+
+.event-end {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.event-source-time {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.event-details {
+  min-width: 0;
+}
+
+.event-title {
+  margin: 0 0 4px;
+  color: var(--text-highlight);
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+
+.event-description {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.event-status {
+  margin-top: 6px;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.empty-state {
+  padding: 24px;
+  border: 2px dashed var(--line);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.empty-state.is-error {
+  border-color: rgb(240, 180, 180);
+  color: rgb(138, 31, 31);
+  background: rgb(255, 245, 245);
+}
+
+@media (max-width: 720px) {
+  .page-shell {
+    width: min(100% - 20px, 960px);
+    padding: 20px 0;
+  }
+
+  .panel-header {
+    padding: 22px;
+  }
+
+  .header-main {
+    display: grid;
+  }
+
+  .site-logo {
+    width: min(360px, 90%);
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .time-card {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .schedule-list {
+    gap: 22px;
+    padding: 22px;
+  }
+
+  .event-card {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
